@@ -19,7 +19,7 @@ const createSendToken = (user, statusCode, req, res) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    //secure: true, // use the HTTPS connection to send encrypted jwt
+    //secure: false, // use the HTTPS connection to send encrypted jwt
     httpOnly: true, // browser can't edit the jwt ( recieve jwt and store and resend it automaticly with each request)
     secure: req.secure || req.headers["x-forwarded-proto"] === "https",
   };
