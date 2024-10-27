@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/signup", authController.signup);
 router.post("/login", authController.login);
-
+router.get("/logout", authController.logout);
 router.post("/forgotPassword", authController.forgotPassword);
 router.patch("/resetPassword/:token", authController.resetPassword);
 router.patch(
@@ -14,7 +14,11 @@ router.patch(
   authController.protect,
   authController.updatePassword
 );
-
+router.get(
+  "/me",authController.protect,
+  userController.getMe, // to put the actual logged in user id to the req
+  userController.getUser
+);
 router.patch("/updateMe", authController.protect, userController.updateMe);
 router.delete("/deleteMe", authController.protect, userController.deleteMe);
 

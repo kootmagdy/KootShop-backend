@@ -9,13 +9,13 @@ const app = express();
 app.enable("trust proxy");
 // 1) MIDDLEWARES
 const cors=require("cors");
-const corsOptions ={
-   origin:'*', 
-   credentials:true,            //access-control-allow-credentials:true
-   optionSuccessStatus:200,
-}
 
-app.use(cors(corsOptions)) // Use this after the variable declaration
+const corsOptions = {
+  origin: 'http://localhost:3000', // Replace with the origin of your React app
+  credentials: true, // Allow credentials (cookies) to be sent in the request
+};
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(express.json()); // middleware that used to get the data from the request as json
 app.use(cookieParser());
@@ -23,12 +23,12 @@ app.use(express.static(`${__dirname}/public`));
 
 // here is applied on all requests [Global middleware]
 app.use((req, res, next) => {
-  console.log("hey i'm global middleware");
+  console.log("cookies: ",req.cookies);
   next();
 });
 
 app.use((req, res, next) => {
-  console.log("hey i'm Time middleware");
+  //console.log("hey i'm Time middleware");
   req.requestTime = new Date().toISOString();
   next();
 });

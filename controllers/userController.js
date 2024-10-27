@@ -2,21 +2,6 @@ const User = require("./../models/userModel");
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/appError");
 
-// exports.checkID = (req,res,next,val)=>{
-//   console.log(`USER id is: ${val}`);
-//   //console.log(req.params);
-//   const id = val * 1; //trick to convert to number
-//   const tour = user.find((elm) => elm.id === id);
-
-//   if (!user) {
-//     // best solution
-//     return res.status(404).json({
-//       status: "fail",
-//       message: "Invalid Id",
-//     });
-//   }
-// }
-
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
   Object.keys(obj).forEach((el) => {
@@ -72,13 +57,6 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getUser = (req, res) => {
-  res.status(500).json({
-    status: "error",
-    message: "this route not yet defined",
-  });
-};
-
 exports.createUser = (req, res) => {
   res.status(500).json({
     status: "error",
@@ -99,3 +77,14 @@ exports.deleteUser = (req, res) => {
     message: "this route not yet defined",
   });
 };
+
+exports.getMe = (req, res, next) => {
+  req.params.id = req.user.id;
+  next();
+};
+exports.getUser = (req,res,next)=>{
+  res.status(200).json({
+    status: "success",
+    user: req.user,
+  });
+}
