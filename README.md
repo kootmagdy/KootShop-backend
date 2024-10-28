@@ -11,16 +11,16 @@ Kootshop Backend is the server-side API for a Ecommerce platform that focuses on
 `npm install`
 
 ### Set up environment variables: Create a .env file in the root directory and define the following:
-`MONGO_URI=<Your MongoDB connection string>`
-`JWT_SECRET=<Your JWT secret>`
-`PORT=<Port number>`
 `MONGO_URI=<Your MongoDB connection string>`  
 `JWT_SECRET=<Your JWT secret>`  
 `PORT=<Port number>`  
-`EMAIL_USERNAME=<email user>`
-`EMAIL_PASSWORD=<email password>`
-`EMAIL_HOST=<email host>`
-`EMAIL_PORT=<email port>`
+`MONGO_URI=<Your MongoDB connection string>`    
+`JWT_SECRET=<Your JWT secret>`    
+`PORT=<Port number>`    
+`EMAIL_USERNAME=<email user>`  
+`EMAIL_PASSWORD=<email password>`  
+`EMAIL_HOST=<email host>`  
+`EMAIL_PORT=<email port>`  
 
 ### Run the application:
 `npm start`
